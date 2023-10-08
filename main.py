@@ -12,16 +12,6 @@ with open(input_path, 'rb') as i:
         o.write(output)
 
 
-def change_back2(background, img):
-    x, y = 0, 0
-    background = cv2.resize(background, (img.shape[1], img.shape[0]), interpolation = cv2.INTER_AREA)
-    for i in range(img.shape[1]):
-        for j in range(img.shape[0]):
-            (b, g, r) = img[i,j]
-            if (b, g, r) == (0, 0, 0):
-                back[i][j] = img[i][j]
-    return back
-
 def change_back(background, img):
     x, y = 0, 0
     background = cv2.resize(background, (img.shape[1], img.shape[0]), interpolation = cv2.INTER_AREA)
@@ -34,7 +24,7 @@ def change_back(background, img):
 image = cv2.imread('images/result.png', cv2.IMREAD_UNCHANGED)
 back = cv2.imread('images/background_sample.jpg')
 result = change_back(back, image)
-print(image[1,0])
+
 cv2.imwrite('images/result2.png', result)
 
     
